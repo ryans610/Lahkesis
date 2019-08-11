@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RyanJuan.Lahkesis</name>
+    </assembly>
+    <members>
+        <member name="T:RyanJuan.Lahkesis.LahkesisExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:RyanJuan.Lahkesis.RNGRandom">
+            <summary>
+            一個執行緒安全、避免模數偏差 (modulo bias) 且安全處理極端狀況，
+            基於 <see cref="T:System.Security.Cryptography.RNGCryptoServiceProvider"/> 的隨機數產生器。
+            繼承 <see cref="T:System.Random"/> 並實作處置模式 (Dispose Pattern)。
+            </summary>
+        </member>
+        <member name="P:RyanJuan.Lahkesis.RNGRandom.Default">
+            <summary>
+            取得預設 <see cref="T:RyanJuan.Lahkesis.RNGRandom"/> 執行個體的參考。
+            </summary>
+        </member>
+        <member name="M:RyanJuan.Lahkesis.RNGRandom.Finalize">
+            <summary>
+            finalizer
+            </summary>
+        </member>
+    </members>
+</doc>
