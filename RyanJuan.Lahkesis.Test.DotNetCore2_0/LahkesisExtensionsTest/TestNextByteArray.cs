@@ -1,22 +1,32 @@
 ﻿using System;
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using RyanJuan.Lahkesis;
 
 namespace RyanJuan.Lahkesis.Test.DotNetCore2_0.LahkesisExtensionsTest
 {
     public partial class TestLahkesisExtensions
     {
-        private static readonly byte s_byteArraySize = 30;
+        private const byte ByteArraySize = 30;
 
         [TestMethod]
         public void TestNextByteArray()
         {
-            for (int i = 0; i < s_testRepeatCount; i++)
+            var random = new FakeRandom(byteArrayFiller: x =>
             {
-                byte[] result = RNGRandom.Default.NextByteArray(s_byteArraySize);
-                Assert.IsNotNull(result);
-                Assert.AreEqual(result.Length, s_byteArraySize);
-                //Console.WriteLine(result);
+                for(byte i = 0; i < x.Length; i += 1)
+                {
+                    x[i] = (byte)(i * 2);
+                }
+            });
+
+            byte[] result = random.NextByteArray(ByteArraySize);
+            Assert.IsNotNull(result);
+            Assert.AreEqual(result.Length, ByteArraySize);
+            for(byte i = 0; i < ByteArraySize; i += 1)
+            {
+                Assert.AreEqual(result[i], (byte)(i * 2));
             }
         }
     }

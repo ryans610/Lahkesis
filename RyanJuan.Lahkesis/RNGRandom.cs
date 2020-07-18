@@ -12,7 +12,7 @@ namespace RyanJuan.Lahkesis
 #else
     /// <summary>
     /// A random number generator base on <see cref="RNGCryptoServiceProvider"/>
-    /// that is thread-safe, modulo bias avoided and edge cases safely handled.
+    /// that is thread-safe, modulo bias avoided and edge cases are safely handled.
     /// Inherit from <see cref="Random"/> and implement dispose pattern.
     /// </summary>
 #endif
@@ -88,6 +88,7 @@ namespace RyanJuan.Lahkesis
         public override void NextBytes(
             byte[] buffer)
         {
+            ThrowIfObjectDisposed();
             if (buffer is null)
             {
                 throw Error.ArgumentNull(nameof(buffer));
@@ -108,6 +109,7 @@ namespace RyanJuan.Lahkesis
 #endif
         public override double NextDouble()
         {
+            ThrowIfObjectDisposed();
             var buffer = new byte[8];
             long int64;
             do
@@ -131,6 +133,7 @@ namespace RyanJuan.Lahkesis
             int minValue,
             int maxValue)
         {
+            ThrowIfObjectDisposed();
             if (minValue == maxValue)
             {
                 return minValue;
@@ -164,6 +167,7 @@ namespace RyanJuan.Lahkesis
         public override int Next(
             int maxValue)
         {
+            ThrowIfObjectDisposed();
             if (maxValue == 0)
             {
                 return 0;
@@ -185,7 +189,11 @@ namespace RyanJuan.Lahkesis
         /// </summary>
         /// <returns></returns>
 #endif
-        public override int Next() => GenerateInt32();
+        public override int Next()
+        {
+            ThrowIfObjectDisposed();
+            return GenerateInt32();
+        }
 
 #if ZH_HANT
 #else
@@ -217,7 +225,11 @@ namespace RyanJuan.Lahkesis
         /// </summary>
         /// <returns></returns>
 #endif
-        protected override double Sample() => NextDouble();
+        protected override double Sample()
+        {
+            ThrowIfObjectDisposed();
+            return NextDouble();
+        }
 
 #if ZH_HANT
 #else
@@ -228,6 +240,7 @@ namespace RyanJuan.Lahkesis
 #endif
         protected virtual void FillByteArray(byte[] buffer)
         {
+            ThrowIfObjectDisposed();
             _rngProvider.GetBytes(buffer);
         }
 
@@ -240,6 +253,7 @@ namespace RyanJuan.Lahkesis
 #endif
         protected virtual int GenerateInt32()
         {
+            ThrowIfObjectDisposed();
             var buffer = new byte[4];
             int result;
             do
@@ -263,6 +277,7 @@ namespace RyanJuan.Lahkesis
         protected virtual int GenerateInt32WithMaxValue(
             int maxValue)
         {
+            ThrowIfObjectDisposed();
             int noModuloBias = int.MaxValue - int.MaxValue % maxValue;
             int result;
             do
@@ -270,6 +285,14 @@ namespace RyanJuan.Lahkesis
                 result = GenerateInt32();
             } while (result >= noModuloBias);
             return result % maxValue;
+        }
+
+        private void ThrowIfObjectDisposed()
+        {
+            if (_disposed)
+            {
+                Error.ThrowObjectDisposed(this.GetType().FullName);
+            }
         }
 
         /// <summary>

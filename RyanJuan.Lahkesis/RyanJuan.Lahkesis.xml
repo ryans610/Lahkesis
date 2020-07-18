@@ -66,6 +66,16 @@
             <param name="maxValue"></param>
             <returns></returns>
         </member>
+        <member name="M:RyanJuan.Lahkesis.LahkesisExtensions.NextEnum``1(System.Random)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:RyanJuan.Lahkesis.LahkesisExtensions.NextEnum(System.Random,System.Type)">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:RyanJuan.Lahkesis.LahkesisExtensions.NextInt16(System.Random,System.Int16,System.Int16)">
             <summary>
             
@@ -177,6 +187,16 @@
             </summary>
             <param name="random"></param>
             <returns></returns>
+        </member>
+        <member name="M:RyanJuan.Lahkesis.LahkesisExtensions.Next``1(System.Random)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:RyanJuan.Lahkesis.LahkesisExtensions.Next``1(System.Random,``0,``0)">
+            <summary>
+            
+            </summary>
         </member>
         <member name="M:RyanJuan.Lahkesis.LahkesisExtensions.NextUInt16(System.Random,System.UInt16,System.UInt16)">
             <summary>

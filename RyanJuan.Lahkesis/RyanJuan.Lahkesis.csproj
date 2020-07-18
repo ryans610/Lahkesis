@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFrameworks>netstandard2.0;netcoreapp2.0;net40</TargetFrameworks>
         <LangVersion>8.0</LangVersion>
-        <Configurations>Debug;Release;Release-zh-Hant;Release-zh-Hant</Configurations>
+        <Configurations>Debug;Release;Release-zh-Hant</Configurations>
         <Version>1.0.0-beta00811</Version>
         <Authors>RyanJuan</Authors>
     </PropertyGroup>
