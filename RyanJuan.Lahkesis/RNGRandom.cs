@@ -52,12 +52,12 @@ namespace RyanJuan.Lahkesis
         /// <param name="rngCryptoServiceProvider"></param>
 #endif
         public RNGRandom(
-            RNGCryptoServiceProvider rngCryptoServiceProvider)
+            RandomNumberGenerator rngCryptoServiceProvider)
         {
             _rngProvider = rngCryptoServiceProvider;
         }
 
-        private RNGCryptoServiceProvider _rngProvider;
+        private RandomNumberGenerator _rngProvider;
 
         private bool _disposed = false;
 
