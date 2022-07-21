@@ -1,5 +1,7 @@
 ﻿using System;
 
+using JetBrains.Annotations;
+
 namespace RyanJuan.Lahkesis
 {
     public static partial class LahkesisExtensions
@@ -13,7 +15,12 @@ namespace RyanJuan.Lahkesis
         /// <param name="minValue"></param>
         /// <param name="maxValue"></param>
         /// <returns></returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="random"/> is null.
+        /// </exception>
 #endif
+        [PublicAPI]
+        [NonNegativeValue]
         public static ushort NextUInt16(
             this Random random,
             ushort minValue,
@@ -45,7 +52,12 @@ namespace RyanJuan.Lahkesis
         /// <param name="random"></param>
         /// <param name="maxValue"></param>
         /// <returns></returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="random"/> is null.
+        /// </exception>
 #endif
+        [PublicAPI]
+        [NonNegativeValue]
         public static ushort NextUInt16(
             this Random random,
             ushort maxValue)
@@ -68,7 +80,12 @@ namespace RyanJuan.Lahkesis
         /// </summary>
         /// <param name="random"></param>
         /// <returns></returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="random"/> is null.
+        /// </exception>
 #endif
+        [PublicAPI]
+        [NonNegativeValue]
         public static ushort NextUInt16(
             this Random random)
         {

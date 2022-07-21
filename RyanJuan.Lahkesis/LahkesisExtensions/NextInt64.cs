@@ -1,5 +1,7 @@
 ﻿using System;
 
+using JetBrains.Annotations;
+
 namespace RyanJuan.Lahkesis
 {
     public static partial class LahkesisExtensions
@@ -13,7 +15,11 @@ namespace RyanJuan.Lahkesis
         /// <param name="minValue"></param>
         /// <param name="maxValue"></param>
         /// <returns></returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="random"/> is null.
+        /// </exception>
 #endif
+        [PublicAPI]
         public static long NextInt64(
             this Random random,
             long minValue,
@@ -53,7 +59,12 @@ namespace RyanJuan.Lahkesis
         /// <param name="random"></param>
         /// <param name="maxValue"></param>
         /// <returns></returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="random"/> is null.
+        /// </exception>
 #endif
+        [PublicAPI]
+        [NonNegativeValue]
         public static long NextInt64(
             this Random random,
             long maxValue)
@@ -83,7 +94,12 @@ namespace RyanJuan.Lahkesis
         /// </summary>
         /// <param name="random"></param>
         /// <returns></returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="random"/> is null.
+        /// </exception>
 #endif
+        [PublicAPI]
+        [NonNegativeValue]
         public static long NextInt64(
             this Random random)
         {

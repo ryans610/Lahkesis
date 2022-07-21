@@ -1,5 +1,7 @@
 ﻿using System;
 
+using JetBrains.Annotations;
+
 namespace RyanJuan.Lahkesis
 {
     public static partial class LahkesisExtensions
@@ -13,7 +15,11 @@ namespace RyanJuan.Lahkesis
         /// <param name="minValue"></param>
         /// <param name="maxValue"></param>
         /// <returns></returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="random"/> is null.
+        /// </exception>
 #endif
+        [PublicAPI]
         public static float NextSingle(
             this Random random,
             float minValue,
@@ -23,6 +29,7 @@ namespace RyanJuan.Lahkesis
             {
                 throw Error.ArgumentNull(nameof(random));
             }
+            // ReSharper disable once CompareOfFloatsByEqualityOperator
             if (minValue == maxValue)
             {
                 return minValue;
@@ -38,6 +45,7 @@ namespace RyanJuan.Lahkesis
             do
             {
                 result = (float)random.NextDouble(minValue, maxValue);
+                // ReSharper disable once CompareOfFloatsByEqualityOperator
             } while (result == maxValue);
             return result;
         }
@@ -49,7 +57,12 @@ namespace RyanJuan.Lahkesis
         /// </summary>
         /// <param name="random"></param>
         /// <returns></returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="random"/> is null.
+        /// </exception>
 #endif
+        [PublicAPI]
+        [NonNegativeValue]
         public static float NextSingle(
             this Random random)
         {

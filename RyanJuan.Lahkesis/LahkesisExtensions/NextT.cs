@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace RyanJuan.Lahkesis
 {
@@ -10,6 +11,13 @@ namespace RyanJuan.Lahkesis
         /// <summary>
         /// 
         /// </summary>
+        /// <typeparam name="TType"></typeparam>
+        /// <param name="random"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="random"/> is null.
+        /// </exception>
+        /// <exception cref="InvalidOperationException"></exception>
         public static TType Next<TType>(
             this Random random)
             where TType : struct
@@ -28,7 +36,7 @@ namespace RyanJuan.Lahkesis
                 TypeCode.Single => (TType)(object)random.NextSingle(),
                 TypeCode.Double => (TType)(object)random.NextDouble(),
                 TypeCode.Decimal => (TType)(object)random.NextDecimal(),
-                TypeCode.String => (TType)(object)random.NextDecimal().ToString(),
+                TypeCode.String => (TType)(object)random.NextDecimal().ToString(CultureInfo.InvariantCulture),
                 _ => throw new InvalidOperationException(Error.Message.NextTInvalidType),
             };
         }
@@ -39,6 +47,15 @@ namespace RyanJuan.Lahkesis
         /// <summary>
         /// 
         /// </summary>
+        /// <typeparam name="TType"></typeparam>
+        /// <param name="random"></param>
+        /// <param name="maxValue"></param>
+        /// <param name="minValue"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="random"/> is null.
+        /// </exception>
+        /// <exception cref="InvalidOperationException"></exception>
         public static TType Next<TType>(
             this Random random,
             TType maxValue,
@@ -59,7 +76,7 @@ namespace RyanJuan.Lahkesis
                 TypeCode.Single => (TType)(object)random.NextSingle((float)(object)maxValue, (float)(object)minValue),
                 TypeCode.Double => (TType)(object)random.NextDouble((double)(object)maxValue, (double)(object)minValue),
                 TypeCode.Decimal => (TType)(object)random.NextDecimal((decimal)(object)maxValue, (decimal)(object)minValue),
-                TypeCode.String => (TType)(object)random.NextDecimal((decimal)(object)maxValue, (decimal)(object)minValue).ToString(),
+                TypeCode.String => (TType)(object)random.NextDecimal((decimal)(object)maxValue, (decimal)(object)minValue).ToString(CultureInfo.InvariantCulture),
                 _ => throw new InvalidOperationException(Error.Message.NextTInvalidType),
             };
         }

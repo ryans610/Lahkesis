@@ -18,7 +18,7 @@ namespace RyanJuan.Lahkesis
 #endif
     public class RNGRandom : Random, IDisposable
     {
-        private static readonly RNGCryptoServiceProvider s_defaultRNGProvider =
+        private static readonly RandomNumberGenerator s_defaultRNGProvider =
             new RNGCryptoServiceProvider();
 
 #if ZH_HANT

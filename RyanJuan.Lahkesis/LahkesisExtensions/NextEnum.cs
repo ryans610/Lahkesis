@@ -2,6 +2,8 @@
 using System.Collections.Concurrent;
 using System.Linq;
 
+using JetBrains.Annotations;
+
 namespace RyanJuan.Lahkesis
 {
     public static partial class LahkesisExtensions
@@ -12,6 +14,13 @@ namespace RyanJuan.Lahkesis
         /// <summary>
         /// 
         /// </summary>
+        /// <typeparam name="TEnum"></typeparam>
+        /// <param name="random"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="random"/> is null.
+        /// </exception>
+        [PublicAPI]
         public static TEnum NextEnum<TEnum>(
             this Random random)
             where TEnum : Enum
@@ -25,6 +34,13 @@ namespace RyanJuan.Lahkesis
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="random"></param>
+        /// <param name="enumType"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="random"/> is null.
+        /// </exception>
+        [PublicAPI]
         public static object NextEnum(
             this Random random,
             Type enumType)

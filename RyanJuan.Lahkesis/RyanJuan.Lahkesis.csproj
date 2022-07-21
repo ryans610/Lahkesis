@@ -1,35 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFrameworks>netstandard2.0;netcoreapp2.0;net40</TargetFrameworks>
-        <LangVersion>8.0</LangVersion>
-        <Configurations>Debug;Release;Release-zh-Hant</Configurations>
-        <Version>1.0.0-beta00811</Version>
-        <Authors>RyanJuan</Authors>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;netcoreapp2.0;net40</TargetFrameworks>
+    <LangVersion>8.0</LangVersion>
+    <Configurations>Debug;Release;Release-zh-Hant</Configurations>
+    <Version>1.0.0-rc30721</Version>
+    <Authors>RyanJuan</Authors>
+  </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-        <DocumentationFile>D:\ryan\Lahkesis\RyanJuan.Lahkesis\RyanJuan.Lahkesis.xml</DocumentationFile>
-    </PropertyGroup>
+  <PropertyGroup Condition="$(Configuration)=='Debug'">
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+  </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-        <DocumentationFile>D:\ryan\Lahkesis\RyanJuan.Lahkesis\RyanJuan.Lahkesis.xml</DocumentationFile>
-    </PropertyGroup>
+  <PropertyGroup Condition="$(Configuration)=='Release'">
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-zh-Hant|AnyCPU'">
-        <DocumentationFile>D:\ryan\Lahkesis\RyanJuan.Lahkesis\RyanJuan.Lahkesis.xml</DocumentationFile>
-        <DefineConstants>TRACE;ZH_HANT</DefineConstants>
-    </PropertyGroup>
-
-    <ItemGroup>
-      <Compile Remove="lib\netcoreapp2.1\**" />
-      <EmbeddedResource Remove="lib\netcoreapp2.1\**" />
-      <None Remove="lib\netcoreapp2.1\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="lib\net40\zh-Hant\" />
-      <Folder Include="lib\netstandard2.0\zh-Hant\" />
-    </ItemGroup>
+  <PropertyGroup Condition="$(Configuration)=='Release-zh-Hant'">
+    <DefineConstants>$(DefineConstants);RELEASE;ZH_HANT</DefineConstants>
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
 
 </Project>

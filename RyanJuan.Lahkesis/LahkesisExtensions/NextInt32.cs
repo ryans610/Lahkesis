@@ -1,5 +1,7 @@
 ﻿using System;
 
+using JetBrains.Annotations;
+
 namespace RyanJuan.Lahkesis
 {
     public static partial class LahkesisExtensions
@@ -22,11 +24,26 @@ namespace RyanJuan.Lahkesis
         /// </param>
         /// <param name="maxValue">
         /// The exclusive upper bound of the random number returned.
-        /// <paramref name="maxValue"/> must be greater than
-        /// or equal to <paramref name="minValue"/>.
+        /// <paramref name="maxValue"/> must be greater than or equal to
+        /// <paramref name="minValue"/>.
         /// </param>
-        /// <returns></returns>
+        /// <returns>
+        /// A 32-bit signed integer greater than or equal to
+        /// <paramref name="minValue"/> and less than <paramref name="maxValue"/>;
+        /// that is, the range of return values includes
+        /// <paramref name="minValue"/> but not <paramref name="maxValue"/>.
+        /// If <paramref name="minValue"/> equals <paramref name="maxValue"/>,
+        /// <paramref name="minValue"/> is returned.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="random"/> is null.
+        /// </exception>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// <paramref name="minValue"/> is greater than
+        /// <paramref name="maxValue"/>.
+        /// </exception>
 #endif
+        [PublicAPI]
         public static int NextInt32(
             this Random random,
             int minValue,
@@ -48,20 +65,34 @@ namespace RyanJuan.Lahkesis
         /// <returns></returns>
 #else
         /// <summary>
-        /// Returns a non-negative random integer that is
-        /// less than the specified maximum.
+        /// Returns a non-negative random integer
+        /// that is less than the specified maximum.
         /// </summary>
         /// <param name="random"></param>
         /// <param name="maxValue">
-        /// The exclusive upper bound of the random number
-        /// to be generated.
+        /// The exclusive upper bound of the random number to be generated.
         /// <paramref name="maxValue"/> must be greater than or equal to 0.
         /// </param>
-        /// <returns></returns>
+        /// <returns>
+        /// A 32-bit signed integer that is greater than or equal to 0,
+        /// and less than <paramref name="maxValue"/>;
+        /// that is, the range of return values ordinarily includes 0
+        /// but not <paramref name="maxValue"/>.
+        /// However, if <paramref name="maxValue"/> equals 0,
+        /// <paramref name="maxValue"/> is returned.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="random"/> is null.
+        /// </exception>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// <paramref name="maxValue"/> is less than 0.
+        /// </exception>
 #endif
+        [PublicAPI]
+        [NonNegativeValue]
         public static int NextInt32(
             this Random random,
-            int maxValue)
+            [ValueRange(0,int.MaxValue-1)]int maxValue)
         {
             if (random is null)
             {
@@ -81,8 +112,16 @@ namespace RyanJuan.Lahkesis
         /// Returns a non-negative random integer.
         /// </summary>
         /// <param name="random"></param>
-        /// <returns></returns>
+        /// <returns>
+        /// A 32-bit signed integer that is greater than or equal to 0
+        /// and less than <see cref="Int32.MaxValue"/>.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="random"/> is null.
+        /// </exception>
 #endif
+        [PublicAPI]
+        [NonNegativeValue]
         public static int NextInt32(
             this Random random)
         {

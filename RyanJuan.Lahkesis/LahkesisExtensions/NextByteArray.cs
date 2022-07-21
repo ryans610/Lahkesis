@@ -1,5 +1,7 @@
 ﻿using System;
 
+using JetBrains.Annotations;
+
 namespace RyanJuan.Lahkesis
 {
     public static partial class LahkesisExtensions
@@ -12,7 +14,14 @@ namespace RyanJuan.Lahkesis
         /// <param name="random"></param>
         /// <param name="size"></param>
         /// <returns></returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="random"/> is null.
+        /// </exception>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// <paramref name="size"/> is less than 0.
+        /// </exception>
 #endif
+        [PublicAPI]
         public static byte[] NextByteArray(
             this Random random,
             int size)
@@ -27,6 +36,10 @@ namespace RyanJuan.Lahkesis
                     nameof(size),
                     size,
                     Error.Message.SizeSmallerThanZero);
+            }
+            if (size == 0)
+            {
+                return Array.Empty<byte>();
             }
             var array = new byte[size];
             random.NextBytes(array);
