@@ -6,14 +6,23 @@ namespace RyanJuan.Lahkesis
 {
     public static partial class LahkesisExtensions
     {
+#if NETFRAMEWORK && !NET46_OR_GREATER
+        private static readonly byte[] s_emptyByteArray = new byte[0];
+#endif
+
 #if ZH_HANT
 #else
         /// <summary>
-        /// 
+        /// Returns a byte array with specified length that is fill with random value.
         /// </summary>
         /// <param name="random"></param>
-        /// <param name="size"></param>
-        /// <returns></returns>
+        /// <param name="size">
+        /// The length of the array to be generated.
+        /// </param>
+        /// <returns>
+        /// A byte array with the length of <paramref name="size"/>,
+        /// which every value is randomly generated.
+        /// </returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="random"/> is null.
         /// </exception>
@@ -26,10 +35,7 @@ namespace RyanJuan.Lahkesis
             this Random random,
             int size)
         {
-            if (random is null)
-            {
-                throw Error.ArgumentNull(nameof(random));
-            }
+            Error.ThrowIfArgumentNull(random, nameof(random));
             if (size < 0)
             {
                 throw Error.ArgumentOutOfRange(
@@ -39,7 +45,11 @@ namespace RyanJuan.Lahkesis
             }
             if (size == 0)
             {
+#if NETFRAMEWORK && !NET46_OR_GREATER
+                return s_emptyByteArray;
+#else
                 return Array.Empty<byte>();
+#endif
             }
             var array = new byte[size];
             random.NextBytes(array);

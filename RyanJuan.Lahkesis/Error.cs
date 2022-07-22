@@ -42,9 +42,7 @@ namespace RyanJuan.Lahkesis
 #endif
         }
 
-        public static void ThrowIfArgumentNull<TValue>(
-            string name,
-            TValue value)
+        public static void ThrowIfArgumentNull<TValue>(TValue value, string name)
         {
             if (value is null)
             {

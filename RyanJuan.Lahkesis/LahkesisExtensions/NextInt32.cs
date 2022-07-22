@@ -13,7 +13,20 @@ namespace RyanJuan.Lahkesis
         /// <param name="random"></param>
         /// <param name="minValue"></param>
         /// <param name="maxValue"></param>
-        /// <returns></returns>
+        /// <returns>
+        /// 32 位元帶正負號的整數大於或等於 <paramref name="minValue"/>，
+        /// 並且小於 <paramref name="maxValue"/>；
+        /// 也就是說，傳回值的範圍包含 <paramref name="minValue"/>
+        /// 但不包含 <paramref name="maxValue"/>。
+        /// 如果 <paramref name="minValue"/> 等於 <paramref name="maxValue"/>，
+        /// 會傳回 <paramref name="minValue"/>。
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="random"/> 的值為 null.
+        /// </exception>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// <paramref name="minValue"/> 大於 <paramref name="maxValue"/>.
+        /// </exception>
 #else
         /// <summary>
         /// Returns a random integer that is within a specified range.
@@ -49,10 +62,7 @@ namespace RyanJuan.Lahkesis
             int minValue,
             int maxValue)
         {
-            if (random is null)
-            {
-                throw Error.ArgumentNull(nameof(random));
-            }
+            Error.ThrowIfArgumentNull(random, nameof(random));
             return random.Next(minValue, maxValue);
         }
 
@@ -94,10 +104,7 @@ namespace RyanJuan.Lahkesis
             this Random random,
             [ValueRange(0,int.MaxValue-1)]int maxValue)
         {
-            if (random is null)
-            {
-                throw Error.ArgumentNull(nameof(random));
-            }
+            Error.ThrowIfArgumentNull(random, nameof(random));
             return random.Next(maxValue);
         }
 
@@ -114,7 +121,7 @@ namespace RyanJuan.Lahkesis
         /// <param name="random"></param>
         /// <returns>
         /// A 32-bit signed integer that is greater than or equal to 0
-        /// and less than <see cref="Int32.MaxValue"/>.
+        /// and less than <see cref="int.MaxValue"/>.
         /// </returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="random"/> is null.
@@ -125,10 +132,7 @@ namespace RyanJuan.Lahkesis
         public static int NextInt32(
             this Random random)
         {
-            if (random is null)
-            {
-                throw Error.ArgumentNull(nameof(random));
-            }
+            Error.ThrowIfArgumentNull(random, nameof(random));
             return random.Next();
         }
     }

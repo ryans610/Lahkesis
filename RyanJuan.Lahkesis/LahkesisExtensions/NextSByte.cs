@@ -7,17 +7,21 @@ namespace RyanJuan.Lahkesis
     public static partial class LahkesisExtensions
     {
 #if ZH_HANT
+        /// <inheritdoc
+        ///     cref="NextInt32(Random, int, int)"
+        ///     path="/*[not(self::returns)]"/>
 #else
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="random"></param>
-        /// <param name="minValue"></param>
-        /// <param name="maxValue"></param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentNullException">
-        /// <paramref name="random"/> is null.
-        /// </exception>
+        /// <inheritdoc
+        ///     cref="NextInt32(Random, int, int)"
+        ///     path="/*[not(self::returns)]"/>
+        /// <returns>
+        /// A 8-bit signed integer greater than or equal to
+        /// <paramref name="minValue"/> and less than <paramref name="maxValue"/>;
+        /// that is, the range of return values includes
+        /// <paramref name="minValue"/> but not <paramref name="maxValue"/>.
+        /// If <paramref name="minValue"/> equals <paramref name="maxValue"/>,
+        /// <paramref name="minValue"/> is returned.
+        /// </returns>
 #endif
         [PublicAPI]
         public static sbyte NextSByte(
@@ -25,10 +29,7 @@ namespace RyanJuan.Lahkesis
             sbyte minValue,
             sbyte maxValue)
         {
-            if (random is null)
-            {
-                throw Error.ArgumentNull(nameof(random));
-            }
+            Error.ThrowIfArgumentNull(random, nameof(random));
             if (minValue == maxValue)
             {
                 return minValue;
@@ -44,16 +45,21 @@ namespace RyanJuan.Lahkesis
         }
 
 #if ZH_HANT
+        /// <inheritdoc
+        ///     cref="NextInt32(Random, int)"
+        ///     path="/*[not(self::returns)]"/>
 #else
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="random"></param>
-        /// <param name="maxValue"></param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentNullException">
-        /// <paramref name="random"/> is null.
-        /// </exception>
+        /// <inheritdoc
+        ///     cref="NextInt32(Random, int)"
+        ///     path="/*[not(self::returns)]"/>
+        /// <returns>
+        /// A 8-bit signed integer that is greater than or equal to 0,
+        /// and less than <paramref name="maxValue"/>;
+        /// that is, the range of return values ordinarily includes 0
+        /// but not <paramref name="maxValue"/>.
+        /// However, if <paramref name="maxValue"/> equals 0,
+        /// <paramref name="maxValue"/> is returned.
+        /// </returns>
 #endif
         [PublicAPI]
         [NonNegativeValue]
@@ -61,10 +67,7 @@ namespace RyanJuan.Lahkesis
             this Random random,
             sbyte maxValue)
         {
-            if (random is null)
-            {
-                throw Error.ArgumentNull(nameof(random));
-            }
+            Error.ThrowIfArgumentNull(random, nameof(random));
             if (maxValue == 0)
             {
                 return 0;
@@ -80,25 +83,24 @@ namespace RyanJuan.Lahkesis
         }
 
 #if ZH_HANT
+        /// <inheritdoc
+        ///     cref="NextInt32(Random)"
+        ///     path="/*[not(self::returns)]"/>
 #else
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="random"></param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentNullException">
-        /// <paramref name="random"/> is null.
-        /// </exception>
+        /// <inheritdoc
+        ///     cref="NextInt32(Random)"
+        ///     path="/*[not(self::returns)]"/>
+        /// <returns>
+        /// A 8-bit signed integer that is greater than or equal to 0
+        /// and less than <see cref="sbyte.MaxValue"/>.
+        /// </returns>
 #endif
         [PublicAPI]
         [NonNegativeValue]
         public static sbyte NextSByte(
             this Random random)
         {
-            if (random is null)
-            {
-                throw Error.ArgumentNull(nameof(random));
-            }
+            Error.ThrowIfArgumentNull(random, nameof(random));
             return (sbyte)random.Next(sbyte.MaxValue);
         }
     }

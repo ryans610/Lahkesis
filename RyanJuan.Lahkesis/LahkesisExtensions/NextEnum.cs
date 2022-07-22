@@ -25,6 +25,7 @@ namespace RyanJuan.Lahkesis
             this Random random)
             where TEnum : Enum
         {
+            Error.ThrowIfArgumentNull(random, nameof(random));
             return (TEnum)random.NextEnum(typeof(TEnum));
         }
 
@@ -45,8 +46,8 @@ namespace RyanJuan.Lahkesis
             this Random random,
             Type enumType)
         {
-            Error.ThrowIfArgumentNull(nameof(random), random);
-            Error.ThrowIfArgumentNull(nameof(enumType), enumType);
+            Error.ThrowIfArgumentNull(random, nameof(random));
+            Error.ThrowIfArgumentNull(enumType, nameof(enumType));
             Error.ThrowIfTypeIsNotEnum(nameof(enumType), enumType);
             var typeCode = Type.GetTypeCode(enumType.GetEnumUnderlyingType());
             var values = EnumValueHelper.GetValues(enumType);
