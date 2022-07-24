@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>RyanJuan.Lahkesis</id>
-    <version>1.0.0-rc30721</version>
+    <version>$version$</version>
     <description>Contains two major parts. One is RNGRandom, a random number generator base on System.Security.Cryptography.RNGCryptoServiceProvider that is thread-safe, avoid modulo bias, and safely handle edge cases; The other one is extension methods of all numeric type for System.Random, or whoever inherit from System.Random.</description>
     <authors>RyanJuan</authors>
     <owners>RyanJuan</owners>
@@ -15,7 +15,7 @@
     <tags>Random RNG Generator RNGCryptoServiceProvider Extension ThreadSafe ModuloBias</tags>
     <dependencies>
       <group targetFramework="netstandard2.0" />
-      <group targetFramework="netcoreapp2.1" />
+      <group targetFramework="netcoreapp2.0" />
       <group targetFramework="net40" />
     </dependencies>
   </metadata>
