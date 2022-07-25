@@ -12,6 +12,14 @@ namespace RyanJuan.Lahkesis
         /// <inheritdoc
         ///     cref="NextDouble(Random,double,double)"
         ///     path="/*[not(self::returns)]"/>
+        /// <returns>
+        /// 十進位浮點數大於或等於 <paramref name="minValue"/>，
+        /// 並且小於 <paramref name="maxValue"/>；
+        /// 也就是說，傳回值的範圍包含 <paramref name="minValue"/>
+        /// 但不包含 <paramref name="maxValue"/>。
+        /// 如果 <paramref name="minValue"/> 等於 <paramref name="maxValue"/>，
+        /// 會傳回 <paramref name="minValue"/>。
+        /// </returns>
 #else
         /// <inheritdoc
         ///     cref="NextDouble(Random,double,double)"
@@ -55,6 +63,9 @@ namespace RyanJuan.Lahkesis
         /// <inheritdoc
         ///     cref="NextSingle(Random)"
         ///     path="/*[not(self::returns)]"/>
+        /// <returns>
+        /// 十進位浮點數大於或等於 0.0，且小於 1.0。
+        /// </returns>
 #else
         /// <inheritdoc
         ///     cref="NextSingle(Random)"

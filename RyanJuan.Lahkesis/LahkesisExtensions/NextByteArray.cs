@@ -11,6 +11,22 @@ namespace RyanJuan.Lahkesis
 #endif
 
 #if ZH_HANT
+        /// <summary>
+        /// 產生一個指定長度，填滿隨機值的位元陣列。
+        /// </summary>
+        /// <param name="random"></param>
+        /// <param name="size">
+        /// 要產生陣列的長度。
+        /// </param>
+        /// <returns>
+        /// 一個長度為 <paramref name="size"/> 的位元陣列，其中每個值都是隨機產生的。
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="random"/> 的值為 null。
+        /// </exception>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// <paramref name="size"/> 小於 0。
+        /// </exception>
 #else
         /// <summary>
         /// Returns a byte array with specified length that is fill with random value.

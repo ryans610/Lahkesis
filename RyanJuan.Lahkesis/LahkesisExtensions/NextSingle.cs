@@ -10,6 +10,14 @@ namespace RyanJuan.Lahkesis
         /// <inheritdoc
         ///     cref="NextDouble(Random, double, double)"
         ///     path="/*[not(self::returns)]"/>
+        /// <returns>
+        /// 單精確度浮點數大於或等於 <paramref name="minValue"/>，
+        /// 並且小於 <paramref name="maxValue"/>；
+        /// 也就是說，傳回值的範圍包含 <paramref name="minValue"/>
+        /// 但不包含 <paramref name="maxValue"/>。
+        /// 如果 <paramref name="minValue"/> 等於 <paramref name="maxValue"/>，
+        /// 會傳回 <paramref name="minValue"/>。
+        /// </returns>
 #else
         /// <inheritdoc
         ///     cref="NextDouble(Random, double, double)"
@@ -53,10 +61,15 @@ namespace RyanJuan.Lahkesis
 
 #if ZH_HANT
         /// <summary>
-        /// 
+        /// 傳回大於或等於 0.0，且小於 1.0 的隨機浮點數。
         /// </summary>
         /// <param name="random"></param>
-        /// <returns></returns>
+        /// <returns>
+        /// 單精確度浮點數大於或等於 0.0，且小於 1.0。
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="random"/> 的值為 null。
+        /// </exception>
 #else
         /// <summary>
         /// Returns a random floating-point number that is greater than or equal to 0.0, and less than 1.0.

@@ -11,8 +11,13 @@ namespace RyanJuan.Lahkesis
         /// 傳回指定範圍內的隨機整數。
         /// </summary>
         /// <param name="random"></param>
-        /// <param name="minValue"></param>
-        /// <param name="maxValue"></param>
+        /// <param name="minValue">
+        /// 傳回亂數的內含下限 (Inclusive Lower Bound)。
+        /// </param>
+        /// <param name="maxValue">
+        /// 傳回亂數的獨佔上限。
+        /// <paramref name="maxValue"/> 必須大於或等於 <paramref name="minValue"/>。
+        /// </param>
         /// <returns>
         /// 32 位元帶正負號的整數大於或等於 <paramref name="minValue"/>，
         /// 並且小於 <paramref name="maxValue"/>；
@@ -22,10 +27,10 @@ namespace RyanJuan.Lahkesis
         /// 會傳回 <paramref name="minValue"/>。
         /// </returns>
         /// <exception cref="ArgumentNullException">
-        /// <paramref name="random"/> 的值為 null.
+        /// <paramref name="random"/> 的值為 null。
         /// </exception>
         /// <exception cref="ArgumentOutOfRangeException">
-        /// <paramref name="minValue"/> 大於 <paramref name="maxValue"/>.
+        /// <paramref name="minValue"/> 大於 <paramref name="maxValue"/>。
         /// </exception>
 #else
         /// <summary>
@@ -71,8 +76,22 @@ namespace RyanJuan.Lahkesis
         /// 傳回小於指定之最大值的非負值隨機整數。
         /// </summary>
         /// <param name="random"></param>
-        /// <param name="maxValue"></param>
-        /// <returns></returns>
+        /// <param name="maxValue">
+        /// 要產生之亂數的獨佔上限。
+        /// <paramref name="maxValue"/> 必須大於或等於 0。
+        /// </param>
+        /// <returns>
+        /// 32 位元帶正負號的整數大於或等於 0，並且小於 <paramref name="maxValue"/>；
+        /// 也就是說，傳回值的範圍通常包含 0 但不包含 <paramref name="maxValue"/>。
+        /// 然而，如果 <paramref name="maxValue"/> 等於 0，
+        /// 則會傳回 <paramref name="maxValue"/>。
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="random"/> 的值為 null。
+        /// </exception>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// <paramref name="maxValue"/> 小於 0。
+        /// </exception>
 #else
         /// <summary>
         /// Returns a non-negative random integer
@@ -102,7 +121,7 @@ namespace RyanJuan.Lahkesis
         [NonNegativeValue]
         public static int NextInt32(
             this Random random,
-            [ValueRange(0,int.MaxValue-1)]int maxValue)
+            [ValueRange(0, int.MaxValue - 1)] int maxValue)
         {
             Error.ThrowIfArgumentNull(random, nameof(random));
             return random.Next(maxValue);
@@ -113,7 +132,12 @@ namespace RyanJuan.Lahkesis
         /// 傳回非負值的隨機整數。
         /// </summary>
         /// <param name="random"></param>
-        /// <returns></returns>
+        /// <returns>
+        /// 大於或等於 0 且小於 <see cref="int.MaxValue"/> 的 32 位元帶正負號整數。
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="random"/> 的值為 null。
+        /// </exception>
 #else
         /// <summary>
         /// Returns a non-negative random integer.

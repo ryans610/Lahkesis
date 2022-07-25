@@ -10,6 +10,14 @@ namespace RyanJuan.Lahkesis
         /// <inheritdoc
         ///     cref="NextInt32(Random, int, int)"
         ///     path="/*[not(self::returns)]"/>
+        /// <returns>
+        /// 8 位元帶正負號的整數大於或等於 <paramref name="minValue"/>，
+        /// 並且小於 <paramref name="maxValue"/>；
+        /// 也就是說，傳回值的範圍包含 <paramref name="minValue"/>
+        /// 但不包含 <paramref name="maxValue"/>。
+        /// 如果 <paramref name="minValue"/> 等於 <paramref name="maxValue"/>，
+        /// 會傳回 <paramref name="minValue"/>。
+        /// </returns>
 #else
         /// <inheritdoc
         ///     cref="NextInt32(Random, int, int)"
@@ -48,6 +56,12 @@ namespace RyanJuan.Lahkesis
         /// <inheritdoc
         ///     cref="NextInt32(Random, int)"
         ///     path="/*[not(self::returns)]"/>
+        /// <returns>
+        /// 8 位元帶正負號的整數大於或等於 0，並且小於 <paramref name="maxValue"/>；
+        /// 也就是說，傳回值的範圍通常包含 0 但不包含 <paramref name="maxValue"/>。
+        /// 然而，如果 <paramref name="maxValue"/> 等於 0，
+        /// 則會傳回 <paramref name="maxValue"/>。
+        /// </returns>
 #else
         /// <inheritdoc
         ///     cref="NextInt32(Random, int)"
@@ -86,6 +100,9 @@ namespace RyanJuan.Lahkesis
         /// <inheritdoc
         ///     cref="NextInt32(Random)"
         ///     path="/*[not(self::returns)]"/>
+        /// <returns>
+        /// 大於或等於 0 且小於 <see cref="sbyte.MaxValue"/> 的 8 位元帶正負號整數。
+        /// </returns>
 #else
         /// <inheritdoc
         ///     cref="NextInt32(Random)"
