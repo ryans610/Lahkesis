@@ -1,19 +1,23 @@
-﻿using System;
-
-namespace RyanJuan.Lahkesis
-{
-#if ZH_HANT
-    /// <summary>
-    /// Lahkesis 套件用於擴展 <see cref="Random"/> 功能性的擴充方法。
-    /// </summary>
-#else
-    /// <summary>
-    /// The extension methods of Lahkesis that extend the functionality of
-    /// <see cref="Random"/>.
-    /// </summary>
+﻿#if NETCOREAPP1_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+using System.Buffers;
 #endif
-    public static partial class LahkesisExtensions
-    {
 
-    }
+namespace RyanJuan.Lahkesis;
+
+#if ZH_HANT
+/// <summary>
+/// Lahkesis 套件用於擴展 <see cref="Random"/> 功能性的擴充方法。
+/// </summary>
+#else
+/// <summary>
+/// The extension methods of Lahkesis that extend the functionality of
+/// <see cref="Random"/>.
+/// </summary>
+#endif
+public static partial class LahkesisExtensions
+{
+#if NETCOREAPP1_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+    internal static ArrayPool<byte> BufferPool { get; } =
+        ArrayPool<byte>.Create();
+#endif
 }

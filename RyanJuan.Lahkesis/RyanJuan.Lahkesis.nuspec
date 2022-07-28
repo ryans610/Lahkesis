@@ -9,14 +9,15 @@
     <projectUrl>https://github.com/ryans610/Lahkesis</projectUrl>
     <license type="expression">MIT</license>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <releaseNotes>Lahkesis release candidate (1.0.0-rc30721)</releaseNotes>
+    <releaseNotes>Lahkesis 1.1.0 alpha test</releaseNotes>
     <copyright>Copyright ©2022 RyanJuan</copyright>
     <language>en,zh-Hant</language>
     <tags>Random RNG Generator RNGCryptoServiceProvider Extension ThreadSafe ModuloBias</tags>
     <dependencies>
-      <group targetFramework="netstandard2.0" />
-      <group targetFramework="netcoreapp2.0" />
-      <group targetFramework="net40" />
+      <group targetFramework="net6.0" />
+      <group targetFramework="netstandard2.1" />
+      <group targetFramework="netcoreapp3.1" />
+      <group targetFramework="net48" />
     </dependencies>
   </metadata>
   <files>
